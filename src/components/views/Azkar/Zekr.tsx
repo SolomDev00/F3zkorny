@@ -3,7 +3,7 @@ import sunImg from "../../../assets/sun.png";
 import moonImg from "../../../assets/moon.png";
 import studyingImg from "../../../assets/studying.png";
 import rainImg from "../../../assets/rain.png";
-import prayImg from "../../../assets/imgs/pray.png";
+import prayImg from "../../../assets/pray.png";
 
 const imgs: Record<string, string> = {
   sun: sunImg,
