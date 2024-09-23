@@ -1,0 +1,31 @@
+{
+  "ar": {
+    "egypt": "مصر",
+    "hour": "ساعة",
+    "minutes": "دقيقة",
+    "timesForDiv": "أوقات الصلاة لـ {country}",
+    "timeToNextPrayer": "الوقت المتبقي للصلاة التالية: {nextPrayer}",
+    "current": "الوقت الحالي: {currentTime}",
+    "nextPrayer": "الصلاة التالية: {nextPrayer}",
+    "fajr": "الفجر",
+    "sunrise": "الشروق",
+    "dhuhr": "الظهر",
+    "asr": "العصر",
+    "maghrib": "المغرب",
+    "isha": "العشاء",
+    "firstthird": "النصف الأول"
+  },
+  "en": {
+    "timesForDiv": "Prayer Times for {country}",
+    "timeToNextPrayer": "Time to Next Prayer: {nextPrayer}",
+    "current": "Current Time: {currentTime}",
+    "nextPrayer": "Next Prayer: {nextPrayer}",
+    "fajr": "Fajr",
+    "sunrise": "Sunrise",
+    "dhuhr": "Dhuhr",
+    "asr": "Asr",
+    "maghrib": "Maghrib",
+    "isha": "Isha",
+    "firstthird": "Firstthird"
+  }
+}
