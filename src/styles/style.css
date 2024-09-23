@@ -480,6 +480,7 @@ input:hover {
   overflow: hidden;
   cursor: grab;
 }
+
 .azkar .parent .top {
   border-bottom: 2px solid rgba(0, 0, 0, 0.1);
   display: flex;
@@ -487,8 +488,10 @@ input:hover {
   justify-content: flex-start;
   gap: 20px;
   padding: 10px 30px;
-  overflow-x: scroll;
-  transition: transform 0.2s;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  cursor: grab;
 }
 
 .azkar .parent .top::-webkit-scrollbar {
@@ -507,7 +510,8 @@ input:hover {
   min-width: 270px;
   position: relative;
   overflow: hidden;
-  cursor: pointer;
+  flex: 0 0 auto;
+  cursor: grab;
 }
 .azkar .top .hadeeth {
   background-image: linear-gradient(

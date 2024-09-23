@@ -19,10 +19,10 @@ interface ZekrProps {
   name: string;
   count: number;
   icon: keyof typeof imgs;
-  onDragStart: (event: React.DragEvent<HTMLDivElement>) => void;
+  // onDragStart: (event: React.DragEvent<HTMLDivElement>) => void;
 }
 
-const Zekr: React.FC<ZekrProps> = ({ id, name, count, icon, onDragStart }) => {
+const Zekr: React.FC<ZekrProps> = ({ id, name, count, icon }) => {
   const { zekrClickHandler } = useAzkarContext();
 
   return (
@@ -30,7 +30,7 @@ const Zekr: React.FC<ZekrProps> = ({ id, name, count, icon, onDragStart }) => {
       className="zekr text-right"
       id={String(id)}
       draggable="true" // enable dragging with mouse
-      onDragStart={onDragStart} // handle drag start
+      // onDragStart={onDragStart} // handle drag start
       onClick={() => zekrClickHandler(id)} // Handle clicking event
     >
       <h1>{name}</h1>

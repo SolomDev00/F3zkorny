@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import Zekr from "./Zekr";
 import ZekrView from "./ZekrView";
 import useAzkarContext from "../../../contexts/azkarContext";
-import azkarApi from "../../../jsons/azkar.json";
+import azkarApi from '../../../jsons/azkar.json'
 
 interface ZekrData {
   text: string;
@@ -18,32 +18,54 @@ interface AzkarData {
 
 const Azkar: React.FC = () => {
   const { zekr } = useAzkarContext();
-  const [draggingId, setDraggingId] = useState<number | null>(null);
+  const sliderRef = useRef<HTMLDivElement>(null);
+  let isDown = false;
+  let startX: number;
+  let scrollLeft: number;
 
-  // handle drag start event
-  const handleDragStart = (id: number) => {
-    setDraggingId(id);
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (sliderRef.current) {
+      isDown = true;
+      sliderRef.current.classList.add("active");
+      startX = e.pageX - sliderRef.current.offsetLeft;
+      scrollLeft = sliderRef.current.scrollLeft;
+    }
   };
 
-  // handle drag over event
-  const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
-    event.preventDefault(); // Allow drop
+  const handleMouseLeave = () => {
+    if (sliderRef.current) {
+      isDown = false;
+      sliderRef.current.classList.remove("active");
+    }
   };
 
-  // handle drop event
-  const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
-    event.preventDefault();
-    setDraggingId(null);
-    console.log(`Zekr with ID ${draggingId} was dropped`);
+  const handleMouseUp = () => {
+    if (sliderRef.current) {
+      isDown = false;
+      sliderRef.current.classList.remove("active");
+    }
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDown) return; // stop the function from running
+    e.preventDefault();
+    if (sliderRef.current) {
+      const x = e.pageX - sliderRef.current.offsetLeft;
+      const walk = (x - startX) * 2; // the * 2 makes the scroll faster
+      sliderRef.current.scrollLeft = scrollLeft - walk;
+    }
   };
 
   return (
     <div className="azkar route-h">
       <div className="parent pr-10">
         <div
-          className="top flex overflow-x-auto" // Enable horizontal scroll
-          onDragOver={handleDragOver}
-          onDrop={handleDrop}
+          className="top"
+          ref={sliderRef}
+          onMouseDown={handleMouseDown}
+          onMouseLeave={handleMouseLeave}
+          onMouseUp={handleMouseUp}
+          onMouseMove={handleMouseMove}
         >
           {azkarApi.map((ele: AzkarData) => (
             <Zekr
@@ -52,7 +74,7 @@ const Azkar: React.FC = () => {
               count={ele.data.length}
               icon={ele.icon}
               id={ele.id}
-              onDragStart={() => handleDragStart(ele.id)}
+
             />
           ))}
         </div>
