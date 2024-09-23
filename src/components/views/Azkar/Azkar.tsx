@@ -18,34 +18,32 @@ interface AzkarData {
 
 const Azkar: React.FC = () => {
   const { zekr } = useAzkarContext();
-  const [dragOver, setDragOver] = useState(false);
+  const [draggingId, setDraggingId] = useState<number | null>(null);
 
-  // handle drag over
+  // handle drag start event
+  const handleDragStart = (id: number) => {
+    setDraggingId(id);
+  };
+
+  // handle drag over event
   const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
-    event.preventDefault(); // prevent default to allow drop
-    setDragOver(true);
+    event.preventDefault(); // Allow drop
   };
 
-  // handle drop
+  // handle drop event
   const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
-    const zekrId = event.dataTransfer.getData("text/plain");
-    console.log(`Zekr with ID ${zekrId} dropped!`);
-    setDragOver(false);
-  };
-
-  // handle drag leave
-  const handleDragLeave = () => {
-    setDragOver(false);
+    event.preventDefault();
+    setDraggingId(null);
+    console.log(`Zekr with ID ${draggingId} was dropped`);
   };
 
   return (
     <div className="azkar route-h">
       <div className="parent pr-10">
         <div
-          className={`top ${dragOver ? "drag-over" : ""}`}
+          className="top flex overflow-x-auto" // Enable horizontal scroll
           onDragOver={handleDragOver}
           onDrop={handleDrop}
-          onDragLeave={handleDragLeave}
         >
           {azkarApi.map((ele: AzkarData) => (
             <Zekr
@@ -54,6 +52,7 @@ const Azkar: React.FC = () => {
               count={ele.data.length}
               icon={ele.icon}
               id={ele.id}
+              onDragStart={() => handleDragStart(ele.id)}
             />
           ))}
         </div>
