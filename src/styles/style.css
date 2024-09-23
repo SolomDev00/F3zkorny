@@ -477,6 +477,8 @@ input:hover {
   border-radius: 10px;
   display: grid;
   grid-template-rows: 25% 60%;
+  overflow: hidden;
+  cursor: grab;
 }
 .azkar .parent .top {
   border-bottom: 2px solid rgba(0, 0, 0, 0.1);
@@ -486,6 +488,7 @@ input:hover {
   gap: 20px;
   padding: 10px 30px;
   overflow-x: scroll;
+  transition: transform 0.2s;
 }
 
 .azkar .parent .top::-webkit-scrollbar {

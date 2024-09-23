@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import Zekr from "./Zekr";
 import ZekrView from "./ZekrView";
 import useAzkarContext from "../../../contexts/azkarContext";
-import azkarApi from '../../../jsons/azkar.json'
+import azkarApi from "../../../jsons/azkar.json";
 
 interface ZekrData {
   text: string;
@@ -18,11 +18,35 @@ interface AzkarData {
 
 const Azkar: React.FC = () => {
   const { zekr } = useAzkarContext();
+  const [dragOver, setDragOver] = useState(false);
+
+  // handle drag over
+  const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault(); // prevent default to allow drop
+    setDragOver(true);
+  };
+
+  // handle drop
+  const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
+    const zekrId = event.dataTransfer.getData("text/plain");
+    console.log(`Zekr with ID ${zekrId} dropped!`);
+    setDragOver(false);
+  };
+
+  // handle drag leave
+  const handleDragLeave = () => {
+    setDragOver(false);
+  };
 
   return (
     <div className="azkar route-h">
       <div className="parent pr-10">
-        <div className="top">
+        <div
+          className={`top ${dragOver ? "drag-over" : ""}`}
+          onDragOver={handleDragOver}
+          onDrop={handleDrop}
+          onDragLeave={handleDragLeave}
+        >
           {azkarApi.map((ele: AzkarData) => (
             <Zekr
               key={ele.id}

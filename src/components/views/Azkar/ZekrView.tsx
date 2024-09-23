@@ -49,12 +49,12 @@ const ZekrView: React.FC = () => {
       </div>
       <div className="arrows">
         <BsArrowLeftSquareFill
-          className={`arr ${zekrNum === zekr.data.length - 1 && "disable"}`}
-          onClick={() => arrowHandler("next")}
-        />
-        <BsArrowRightSquareFill
           className={`arr ${zekrNum === 0 && "disable"}`}
           onClick={() => arrowHandler("prev")}
+        />
+        <BsArrowRightSquareFill
+          className={`arr ${zekrNum === zekr.data.length - 1 && "disable"}`}
+          onClick={() => arrowHandler("next")}
         />
       </div>
     </div>
