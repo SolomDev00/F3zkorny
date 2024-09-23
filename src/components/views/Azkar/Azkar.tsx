@@ -47,11 +47,11 @@ const Azkar: React.FC = () => {
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDown) return; // stop the function from running
+    if (!isDown) return;
     e.preventDefault();
     if (sliderRef.current) {
       const x = e.pageX - sliderRef.current.offsetLeft;
-      const walk = (x - startX) * 2; // the * 2 makes the scroll faster
+      const walk = (x - startX) * 2;
       sliderRef.current.scrollLeft = scrollLeft - walk;
     }
   };
