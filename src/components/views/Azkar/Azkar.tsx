@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Zekr from "./Zekr";
 import ZekrView from "./ZekrView";
-import { azkarContext } from "../../../contexts/azkarContext";
+import azkarContext from "../../../contexts/azkarContext";
 import azkarApi from "../../../jsons/azkar.json";
 
 interface ZekrData {

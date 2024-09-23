@@ -13,6 +13,7 @@ import LoginPage from "../views/auth/pages/Login";
 import AuthLayout from "../views/auth/Layout";
 import AuthPage from "../views/auth";
 import RegisterPage from "../views/auth/pages/Register";
+import Azkar from "../components/views/Azkar/Azkar";
 
 const cookie = new Cookies();
 const token = cookie.get("userLogged");
@@ -26,6 +27,7 @@ const routers = createHashRouter(
       {/* Root Layout */}
       <Route path="/" element={<RootLayout />} errorElement={<ErrorHandler />}>
         <Route index element={<HomePage />} />
+        <Route path="/azkar" element={<Azkar />} />
       </Route>
       <Route
         path="/auth/"

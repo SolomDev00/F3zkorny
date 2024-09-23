@@ -1,28 +1,35 @@
-import { useContext } from "react";
+import { useAzkarContext } from "../../../contexts/azkarContext";
 import sunImg from "../../../assets/sun.png";
 import moonImg from "../../../assets/moon.png";
-import studingImg from "../../../assets/studying.png";
+import studyingImg from "../../../assets/studying.png";
 import rainImg from "../../../assets/rain.png";
-import prayImg from "../../assets/imgs/pray.png";
-import { azkarContext } from "../../../contexts/azkarContext";
+import prayImg from "../../../assets/imgs/pray.png";
 
-const imgs = {
+const imgs: Record<string, string> = {
   sun: sunImg,
   moon: moonImg,
-  studying: studingImg,
+  studying: studyingImg,
   rain: rainImg,
   pray: prayImg,
 };
 
-const Zekr = ({ id, name, count, icon }) => {
-  const { zekrClickHandler } = useContext(azkarContext);
+interface ZekrProps {
+  id: number;
+  name: string;
+  count: number;
+  icon: keyof typeof imgs;
+}
+
+const Zekr: React.FC<ZekrProps> = ({ id, name, count, icon }) => {
+  const { zekrClickHandler } = useAzkarContext();
+
   return (
-    <div className="zekr" id={id} onClick={() => zekrClickHandler(id)}>
+    <div className="zekr" id={String(id)} onClick={() => zekrClickHandler(id)}>
       <h1>{name}</h1>
       <h2>
         {count} {count > 10 ? "ذِكر" : "أذكار"}
       </h2>
-      <img className="icon" src={imgs[icon]} alt="" />
+      <img className="icon" src={imgs[icon]} alt={name} />
     </div>
   );
 };

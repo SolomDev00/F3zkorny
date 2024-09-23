@@ -1,9 +1,41 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useContext } from "react";
 import { BsArrowRightSquareFill, BsArrowLeftSquareFill } from "react-icons/bs";
-import { azkarContext } from "../../../contexts/azkarContext";
+import azkarContext from "../../../contexts/azkarContext";
 
-const ZekrView = () => {
-  const { zekr, zekrItem, arrowHandler, zekrNum } = useContext(azkarContext);
+interface ZekrItem {
+  text: string;
+  disc: string;
+}
+
+interface Zekr {
+  name: string;
+  data: ZekrItem[];
+}
+
+interface AzkarContextProps {
+  zekr: Zekr | null;
+  zekrItem: ZekrItem | null;
+  zekrNum: number;
+  arrowHandler: (direction: "prev" | "next") => void;
+}
+
+const ZekrView: React.FC = () => {
+  const context = useContext(azkarContext);
+
+  if (!context) {
+    return <div>Loading...</div>;
+  }
+
+  const { zekr, zekrItem, arrowHandler, zekrNum } = context;
+
+  if (!zekr) {
+    return <div>من فضلك إختر ذِكر</div>;
+  }
+
+  if (!zekrItem) {
+    return <div>لا يوجد ذِكر محدد حالياً</div>;
+  }
 
   return (
     <div className="zekr-view">
