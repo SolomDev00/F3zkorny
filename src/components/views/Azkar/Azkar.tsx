@@ -21,7 +21,7 @@ const Azkar: React.FC = () => {
 
   return (
     <div className="azkar route-h">
-      <div className="parent">
+      <div className="parent pr-10">
         <div className="top">
           {azkarApi.map((ele: AzkarData) => (
             <Zekr
