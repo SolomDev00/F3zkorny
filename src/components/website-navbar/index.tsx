@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 //   XMarkIcon,
 // } from "@heroicons/react/20/solid";
 import { Link as ScrollLink, animateScroll as scroll } from "react-scroll";
-import LogoImg from '../../assets/logo.svg';
+import LogoImg from '../../assets/logo.png';
 import { Link } from "react-router-dom";
 
 const Navbar = () => {

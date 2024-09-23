@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useContext } from "react";
 import { BsArrowRightSquareFill, BsArrowLeftSquareFill } from "react-icons/bs";
-import azkarContext from "../../../contexts/azkarContext";
+import { azkarContext } from "../../../contexts/azkarContext";
 
 interface ZekrItem {
   text: string;
@@ -48,13 +48,13 @@ const ZekrView: React.FC = () => {
         <div>{zekrItem.disc}</div>
       </div>
       <div className="arrows">
-        <BsArrowRightSquareFill
-          className={`arr ${zekrNum === 0 && "disable"}`}
-          onClick={() => arrowHandler("prev")}
-        />
         <BsArrowLeftSquareFill
           className={`arr ${zekrNum === zekr.data.length - 1 && "disable"}`}
           onClick={() => arrowHandler("next")}
+        />
+        <BsArrowRightSquareFill
+          className={`arr ${zekrNum === 0 && "disable"}`}
+          onClick={() => arrowHandler("prev")}
         />
       </div>
     </div>

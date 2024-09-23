@@ -1,4 +1,4 @@
-import { useAzkarContext } from "../../../contexts/azkarContext";
+import useAzkarContext from "../../../contexts/azkarContext";
 import sunImg from "../../../assets/sun.png";
 import moonImg from "../../../assets/moon.png";
 import studyingImg from "../../../assets/studying.png";
@@ -24,7 +24,7 @@ const Zekr: React.FC<ZekrProps> = ({ id, name, count, icon }) => {
   const { zekrClickHandler } = useAzkarContext();
 
   return (
-    <div className="zekr" id={String(id)} onClick={() => zekrClickHandler(id)}>
+    <div className="zekr text-right" id={String(id)} onClick={() => zekrClickHandler(id)}>
       <h1>{name}</h1>
       <h2>
         {count} {count > 10 ? "ذِكر" : "أذكار"}

@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
 import Zekr from "./Zekr";
 import ZekrView from "./ZekrView";
-import azkarContext from "../../../contexts/azkarContext";
-import azkarApi from "../../../jsons/azkar.json";
+import useAzkarContext from "../../../contexts/azkarContext";
+import azkarApi from '../../../jsons/azkar.json'
 
 interface ZekrData {
   text: string;
@@ -17,29 +17,21 @@ interface AzkarData {
 }
 
 const Azkar: React.FC = () => {
-  const context = useContext(azkarContext);
-
-  if (!context) {
-    return <div>Error: azkarContext not provided!</div>;
-  }
-
-  const { zekr } = context;
+  const { zekr } = useAzkarContext();
 
   return (
     <div className="azkar route-h">
       <div className="parent">
         <div className="top">
-          {azkarApi.map((ele: AzkarData) => {
-            return (
-              <Zekr
-                key={ele.id}
-                name={ele.name}
-                count={ele.data.length}
-                icon={ele.icon}
-                id={ele.id}
-              />
-            );
-          })}
+          {azkarApi.map((ele: AzkarData) => (
+            <Zekr
+              key={ele.id}
+              name={ele.name}
+              count={ele.data.length}
+              icon={ele.icon}
+              id={ele.id}
+            />
+          ))}
         </div>
         <div className="bottom">
           {zekr ? (
