@@ -1,19 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, FormEvent } from "react";
 import Surah from "./Surah";
 import { surahContext } from "../../contexts/surahContext";
 
-const QuranSearch = () => {
-  const {
-    dataLoaded,
-    surahs,
-    searchHandler,
-  } = useContext(surahContext);
+const QuranSearch: React.FC = () => {
+  const { dataLoaded, surahs, searchHandler } = useContext(surahContext);
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    searchHandler(e);
+  };
 
   return (
     <div className="search">
       <h1>السُوَر</h1>
       <div className="serach-inp">
-        <form onSubmit={searchHandler}>
+        <form onSubmit={handleSubmit}>
           <input
             placeholder="البحث عن سورة"
             list="surahs-names"
@@ -25,7 +26,7 @@ const QuranSearch = () => {
 
         <datalist id="surahs-names">
           {dataLoaded &&
-            surahs.map((sur) => {
+            surahs.map((sur: { number: number; name: string }) => {
               const name = sur.name
                 .split("")
                 .filter((char) => {
@@ -36,9 +37,8 @@ const QuranSearch = () => {
                 .join("");
               return (
                 <option
-                  num={sur.number}
                   key={sur.number}
-                  value={sur.number + "-" + name}
+                  value={`${sur.number}-${name}`}
                 />
               );
             })}
@@ -47,17 +47,15 @@ const QuranSearch = () => {
 
       <div className="surhas-selection">
         {dataLoaded ? (
-          surahs.map((sur) => {
-            return (
-              <Surah
-                num={sur.number}
-                key={sur.number}
-                name={sur.name}
-                type={sur.revelationType}
-                ayahs={sur.numberOfAyahs}
-              />
-            );
-          })
+          surahs.map((sur: { number: number; name: string; revelationType: string; numberOfAyahs: number }) => (
+            <Surah
+              num={sur.number}
+              key={sur.number}
+              name={sur.name}
+              type={sur.revelationType}
+              ayahs={sur.numberOfAyahs}
+            />
+          ))
         ) : (
           <center>
             <h3>إنتظر حتى تحميل البيانات</h3>

@@ -1,8 +1,17 @@
 import React, { useContext } from "react";
 import { surahContext } from "../../contexts/surahContext";
 
-const Surah = ({ active, name, type, ayahs, num }) => {
+interface SurahProps {
+  active?: boolean;
+  name: string;
+  type: string;
+  ayahs: number;
+  num: number;
+}
+
+const Surah: React.FC<SurahProps> = ({ active, name, type, ayahs, num }) => {
   const { surahClickHandler } = useContext(surahContext);
+
   return (
     <div
       className={`surah ${active && "active"} `}
@@ -10,8 +19,7 @@ const Surah = ({ active, name, type, ayahs, num }) => {
     >
       <div className="title">{name}</div>
       <div className="disc">
-        {type === "Meccan" ? "مكية" : "مدنية"} / {ayahs}{" "}
-        {ayahs <= 10 ? "آيات" : "آيه"}
+        {type === "Meccan" ? "مكية" : "مدنية"} / {ayahs} {ayahs <= 10 ? "آيات" : "آيه"}
       </div>
     </div>
   );

@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { BsArrowRightSquareFill, BsArrowLeftSquareFill } from "react-icons/bs";
-import tasmyaImg from "../../assets/imgs/tasmya.png";
-import tasdeeqImg from "../../assets/imgs/tasdeeq.png";
+import tasmyaImg from "../../assets/tasmya.png";
+import tasdeeqImg from "../../assets/tasdeeq.png";
 import { surahContext } from "../../contexts/surahContext";
 
-const SurahView = () => {
+const SurahView: React.FC = () => {
   const { surahs, surahNumber, surah, arrowHandler, surahLoaded } =
     useContext(surahContext);
 
@@ -15,9 +15,7 @@ const SurahView = () => {
           <>
             <div className="name">
               <BsArrowLeftSquareFill
-                className={`arrow left ${
-                  surahNumber === surahs.length && "disable"
-                }`}
+                className={`arrow left ${surahNumber === surahs.length && "disable"}`}
                 onClick={() => arrowHandler("next")}
               />
               <BsArrowRightSquareFill
@@ -37,16 +35,12 @@ const SurahView = () => {
               </div>
               <div className="ayahs">
                 {surahLoaded ? (
-                  surah.ayahs.map((ayah) => {
-                    return (
-                      <React.Fragment key={ayah.number}>
-                        <span className="ayah-text">{ayah.text}</span>
-                        <span className="ayah-num">
-                          &#40;{ayah.numberInSurah}&#41;
-                        </span>
-                      </React.Fragment>
-                    );
-                  })
+                  surah.ayahs.map((ayah: { number: number; numberInSurah: number; text: string }) => (
+                    <React.Fragment key={ayah.number}>
+                      <span className="ayah-text">{ayah.text}</span>
+                      <span className="ayah-num">&#40;{ayah.numberInSurah}&#41;</span>
+                    </React.Fragment>
+                  ))
                 ) : (
                   <div className="loaded">........</div>
                 )}
