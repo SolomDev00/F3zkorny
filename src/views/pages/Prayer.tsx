@@ -94,39 +94,51 @@ const Prayer: React.FC = () => {
   }
 
   return (
-    <div className='my-20 flex flex-col items-center justify-center'>
+    <div className='my-20 flex flex-col items-center justify-center text-center'>
       <h1 className='text-2xl text-accent font-medium'>أوقات الصلاة في {location}</h1>
-      <div className='my-4'>
-        <p>الوقت الحالي: {currentTime}</p>
+      <div className='mt-6 space-y-2'>
+        <p className='text-5xl text-primary'>{currentTime}</p>
         {nextPrayer ? (
           <p>أقرب صلاة: {nextPrayer.name} في {nextPrayer.time} بعد {nextPrayer.remaining}</p>
         ) : (
-          <p>لا توجد صلوات قادمة اليوم.</p>
+          <p className='text-xl'>لا توجد صلوات قادمة اليوم.</p>
         )}
       </div>
-      <div className="prayer-times">
+      <div className="prayer-times text-right">
         <div className="box">
-          الفجر: {prayerTimes.Fajr}
+          <h3 className='text-xl font-medium'>
+            الفجر: {prayerTimes.Fajr}
+          </h3>
           <img className="icon" src={moonImg} alt="Moon" />
         </div>
         <div className="box">
-          الشروق: {prayerTimes.Sunrise}
+          <h3 className='text-xl font-medium'>
+            الشروق: {prayerTimes.Sunrise}
+          </h3>
           <img className="icon" src={sunImg} alt="Sun" />
         </div>
         <div className="box">
-          الظهر: {prayerTimes.Dhuhr}
+          <h3 className='text-xl font-medium'>
+            الظهر: {prayerTimes.Dhuhr}
+          </h3>
           <img className="icon" src={sunImg} alt="Sun" />
         </div>
         <div className="box">
-          العصر: {prayerTimes.Asr}
+          <h3 className='text-xl font-medium'>
+            العصر: {prayerTimes.Asr}
+          </h3>
           <img className="icon" src={poinImg} alt="Poinsettia" />
         </div>
         <div className="box">
-          المغرب: {prayerTimes.Maghrib}
+          <h3 className='text-xl font-medium'>
+            المغرب: {prayerTimes.Maghrib}
+          </h3>
           <img className="icon" src={poinImg} alt="Poinsettia" />
         </div>
         <div className="box">
-          العشاء: {prayerTimes.Isha}
+          <h3 className='text-xl font-medium'>
+            العشاء: {prayerTimes.Isha}
+          </h3>
           <img className="icon" src={poinImg} alt="Poinsettia" />
         </div>
       </div>

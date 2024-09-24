@@ -636,7 +636,7 @@ input:hover {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  gap: 50px;
+  gap: 20px;
   align-items: center;
   justify-content: center;
   align-content: center;
