@@ -3,6 +3,7 @@ import { BsArrowRightSquareFill, BsArrowLeftSquareFill } from "react-icons/bs";
 import tasmyaImg from "../../assets/tasmya.png";
 import tasdeeqImg from "../../assets/tasdeeq.png";
 import { surahContext } from "../../contexts/surahContext";
+import LoadingSpinner from "../website-loading";
 
 const SurahView: React.FC = () => {
   const context = useContext(surahContext);
@@ -36,7 +37,7 @@ const SurahView: React.FC = () => {
                 {surahLoaded ? (
                   <img src={tasmyaImg} alt="بسم الله الرحمن الرحيم" />
                 ) : (
-                  <div className="loaded-lg">........</div>
+                  <div className="loaded-lg"></div>
                 )}
               </div>
               <div className="ayahs">
@@ -50,14 +51,14 @@ const SurahView: React.FC = () => {
                     )
                   )
                 ) : (
-                  <div className="loaded">........</div>
+                  <div className="loaded"></div>
                 )}
               </div>
               <div className="tasmya">
                 {surahLoaded ? (
                   <img src={tasdeeqImg} alt="صدق الله العظيم" />
                 ) : (
-                  <div className="loaded-lg">........</div>
+                  <LoadingSpinner />
                 )}
               </div>
             </div>

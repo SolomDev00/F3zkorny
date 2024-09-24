@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../components/website-navbar";
 import { useEffect, useState } from "react";
-import HomeLoading from "../components/website-loading/home";
+// import HomeLoading from "../components/website-loading";
 import Footer from "../components/website-footer";
 
 const RootLayout = () => {
@@ -18,7 +18,7 @@ const RootLayout = () => {
     <div className="root-layout">
       {loading ? (
         <div className="h-screen w-full flex justify-center items-center">
-          <HomeLoading />
+          {/* <HomeLoading /> */}
         </div>
       ) : (
         <>
