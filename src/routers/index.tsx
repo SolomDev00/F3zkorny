@@ -14,6 +14,7 @@ import PageNotFound from "../views/PageNotFound";
 // import AuthPage from "../views/auth";
 // import RegisterPage from "../views/auth/pages/Register";
 import Azkar from "../views/pages/Azkar";
+import Quran from "../views/pages/Quran";
 
 // const cookie = new Cookies();
 // const token = cookie.get("userLogged");
@@ -28,6 +29,7 @@ const routers = createHashRouter(
       <Route path="/" element={<RootLayout />} errorElement={<ErrorHandler />}>
         {/* <Route index element={<HomePage />} /> */}
         <Route path="/azkar" element={<Azkar />} />
+        <Route path="/quran" element={<Quran />} />
       </Route>
       <Route
         path="/auth/"

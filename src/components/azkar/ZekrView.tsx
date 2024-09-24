@@ -31,11 +31,11 @@ const ZekrView: React.FC = () => {
         <div>{zekrItem.disc}</div>
       </div>
       <div className="arrows">
-        <div className={`boxArr bg-[#76c853] rounded-md p-2 ${zekrNum === 0 && "disable"}`} onClick={() => arrowHandler("prev")}>
-          <SoArrowLeft />
-        </div>
         <div className={`boxArr bg-[#76c853] rounded-md p-2 ${zekrNum === zekr.data.length - 1 && "disable"}`} onClick={() => arrowHandler("next")}>
           <SoArrowRight />
+        </div>
+        <div className={`boxArr bg-[#76c853] rounded-md p-2 ${zekrNum === 0 && "disable"}`} onClick={() => arrowHandler("prev")}>
+          <SoArrowLeft />
         </div>
       </div>
     </div >

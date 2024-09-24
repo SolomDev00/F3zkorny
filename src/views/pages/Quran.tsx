@@ -1,6 +1,5 @@
-import React from "react";
-import QuranSearch from "./QuranSearch";
-import SurahView from "./SurahView";
+import QuranSearch from "../../components/quran/QuranSearch";
+import SurahView from "../../components/quran/SurahView";
 
 const Quran = () => {
   return (

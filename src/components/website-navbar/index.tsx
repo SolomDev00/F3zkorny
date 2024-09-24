@@ -10,7 +10,9 @@ import { NavLink } from "react-router-dom";
 const Navbar = () => {
     return <nav>
         <div className="container">
-            <img className="logo icon" src={logoImg} alt="logo" />
+            <NavLink to="/">
+                <img className="logo icon cursor-pointer" src={logoImg} alt="logo" />
+            </NavLink>
             <div className="links">
                 <NavLink to="/quran">
                     <img className="icon-sm" src={quranImg} alt="quran icon" />
