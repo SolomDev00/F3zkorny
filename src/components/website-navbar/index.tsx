@@ -26,7 +26,7 @@ const Navbar = () => {
                     <img className="icon-sm" src={hadeethImg} alt="hadeeth icon" />
                     <div>الأحاديث</div>
                 </NavLink>
-                <NavLink to="/sl3a">
+                <NavLink to="/prayer">
                     <img className="icon-sm" src={mosqueImg} alt="mosque icon" />
                     <div>الصلاة</div>
                 </NavLink>

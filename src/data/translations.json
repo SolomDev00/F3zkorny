@@ -1,10 +1,10 @@
 {
   "ar": {
+    "timesForDiv": "أوقات الصلاة في {country}",
     "egypt": "مصر",
-    "hour": "ساعة",
-    "minutes": "دقيقة",
-    "timesForDiv": "أوقات الصلاة لـ {country}",
-    "timeToNextPrayer": "الوقت المتبقي للصلاة التالية: {nextPrayer}",
+    "saudiArabia": "السعودية",
+    "unitedArabEmirates": "الإمارات",
+    "timeToNextPrayer": "الوقت المتبقي للصلاة القادمة {nextPrayer}",
     "current": "الوقت الحالي: {currentTime}",
     "nextPrayer": "الصلاة التالية: {nextPrayer}",
     "fajr": "الفجر",
@@ -13,19 +13,24 @@
     "asr": "العصر",
     "maghrib": "المغرب",
     "isha": "العشاء",
-    "firstthird": "النصف الأول"
+    "hour": "ساعة",
+    "minutes": "دقائق"
   },
   "en": {
-    "timesForDiv": "Prayer Times for {country}",
-    "timeToNextPrayer": "Time to Next Prayer: {nextPrayer}",
-    "current": "Current Time: {currentTime}",
-    "nextPrayer": "Next Prayer: {nextPrayer}",
+    "timesForDiv": "Prayer times in {country}",
+    "egypt": "Egypt",
+    "saudiArabia": "Saudi Arabia",
+    "unitedArabEmirates": "United Arab Emirates",
+    "timeToNextPrayer": "Time to next prayer: {nextPrayer}",
+    "current": "Current time: {currentTime}",
+    "nextPrayer": "Next prayer: {nextPrayer}",
     "fajr": "Fajr",
     "sunrise": "Sunrise",
     "dhuhr": "Dhuhr",
     "asr": "Asr",
     "maghrib": "Maghrib",
     "isha": "Isha",
-    "firstthird": "Firstthird"
+    "hour": "hour",
+    "minutes": "minutes"
   }
 }
