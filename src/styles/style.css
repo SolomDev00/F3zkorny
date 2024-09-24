@@ -305,8 +305,8 @@ input:hover {
 .quran .surah-view .reading .name .arrow {
   position: absolute;
   bottom: 30px;
-  font-size: 1.8rem;
-  color: var(--light-green);
+  font-size: 1.5rem;
+  color: var(--white);
   cursor: pointer;
   transition: all 0.4s;
 }

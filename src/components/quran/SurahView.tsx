@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import { BsArrowRightSquareFill, BsArrowLeftSquareFill } from "react-icons/bs";
 import tasmyaImg from "../../assets/tasmya.png";
 import tasdeeqImg from "../../assets/tasdeeq.png";
 import { surahContext } from "../../contexts/surahContext";
 import LoadingSpinner from "../website-loading";
+import { SoArrowLeft, SoArrowRight } from "solom-icon";
 
 const SurahView: React.FC = () => {
   const context = useContext(surahContext);
@@ -20,22 +20,19 @@ const SurahView: React.FC = () => {
         {surah ? (
           <>
             <div className="name">
-              <BsArrowLeftSquareFill
-                className={`arrow left ${surahNumber === surahs.length ? "disable" : ""
-                  }`}
-                onClick={() => arrowHandler("next")}
-              />
-              <BsArrowRightSquareFill
-                className={`arrow right ${surahNumber === 1 ? "disable" : ""}`}
-                onClick={() => arrowHandler("prev")}
-              />
+              <div className={`arrow right bg-[#76c853] rounded-md p-1 ${surahNumber === surahs.length ? "disable" : ""}`} onClick={() => arrowHandler("next")}>
+                <SoArrowRight />
+              </div>
+              <div className={`arrow left bg-[#76c853] rounded-md p-1 ${surahNumber === 1 ? "disable" : ""}`} onClick={() => arrowHandler("prev")}>
+                <SoArrowLeft />
+              </div>
               <h1>{surahLoaded ? surah.name_ar : <div>جاري التحميل</div>}</h1>
               <h2>{surahLoaded ? surah.name_en : "جاري التحميل"}</h2>
             </div>
             <div className="ayahs-container">
-              <div className="tasmya">
+              <div className="tasmya w-full">
                 {surahLoaded ? (
-                  <img src={tasmyaImg} alt="بسم الله الرحمن الرحيم" />
+                  <img className="mx-auto mb-6" src={tasmyaImg} alt="بسم الله الرحمن الرحيم" />
                 ) : (
                   <div className="loaded-lg"></div>
                 )}
@@ -54,9 +51,9 @@ const SurahView: React.FC = () => {
                   <div className="loaded"></div>
                 )}
               </div>
-              <div className="tasmya">
+              <div className="tasmya w-full">
                 {surahLoaded ? (
-                  <img src={tasdeeqImg} alt="صدق الله العظيم" />
+                  <img className="mx-auto" src={tasdeeqImg} alt="صدق الله العظيم" />
                 ) : (
                   <LoadingSpinner />
                 )}
