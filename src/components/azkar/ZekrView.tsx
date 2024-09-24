@@ -1,24 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useContext } from "react";
-import { BsArrowRightSquareFill, BsArrowLeftSquareFill } from "react-icons/bs";
+import { SoArrowRight, SoArrowLeft } from "solom-icon";
 import { azkarContext } from "../../contexts/azkarContext";
-
-interface ZekrItem {
-  text: string;
-  disc: string;
-}
-
-interface Zekr {
-  name: string;
-  data: ZekrItem[];
-}
-
-interface AzkarContextProps {
-  zekr: Zekr | null;
-  zekrItem: ZekrItem | null;
-  zekrNum: number;
-  arrowHandler: (direction: "prev" | "next") => void;
-}
 
 const ZekrView: React.FC = () => {
   const context = useContext(azkarContext);
@@ -48,16 +31,14 @@ const ZekrView: React.FC = () => {
         <div>{zekrItem.disc}</div>
       </div>
       <div className="arrows">
-        <BsArrowLeftSquareFill
-          className={`arr ${zekrNum === 0 && "disable"}`}
-          onClick={() => arrowHandler("prev")}
-        />
-        <BsArrowRightSquareFill
-          className={`arr ${zekrNum === zekr.data.length - 1 && "disable"}`}
-          onClick={() => arrowHandler("next")}
-        />
+        <div className={`boxArr bg-[#76c853] rounded-md p-2 ${zekrNum === 0 && "disable"}`} onClick={() => arrowHandler("prev")}>
+          <SoArrowLeft />
+        </div>
+        <div className={`boxArr bg-[#76c853] rounded-md p-2 ${zekrNum === zekr.data.length - 1 && "disable"}`} onClick={() => arrowHandler("next")}>
+          <SoArrowRight />
+        </div>
       </div>
-    </div>
+    </div >
   );
 };
 

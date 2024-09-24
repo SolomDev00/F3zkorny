@@ -478,7 +478,7 @@ input:hover {
   display: grid;
   grid-template-rows: 25% 60%;
   overflow: hidden;
-  cursor: grab;
+  /* cursor: grab; */
 }
 
 .azkar .parent .top {
@@ -573,29 +573,33 @@ input:hover {
 .azkar .bottom .zekr-view .zekr-container > p {
   font-family: "Amiri", serif;
 }
+
 .azkar .bottom .zekr-view .zekr-container > div {
   font-size: 1.7rem;
   opacity: 0.3;
 }
+
 .azkar .bottom .zekr-view .arrows {
   display: flex;
   justify-content: space-between;
-  font-size: 2rem;
-  color: var(--light-green);
+  font-size: 1.5rem;
+  color: var(--white);
 }
-.azkar .bottom .zekr-view .arr {
+
+.azkar .bottom .zekr-view .boxArr {
   cursor: pointer;
   transition: 0.4s;
 }
 
-.azkar .bottom .zekr-view .arrows .arr:hover {
+.azkar .bottom .zekr-view .arrows .boxArr:hover {
   transform: scale(1.1);
 }
 
-.azkar .bottom .zekr-view .arrows .arr.disable {
+.azkar .bottom .zekr-view .arrows .boxArr.disable {
   pointer-events: none;
-  opacity: 0.5;
+  opacity: 0.7;
 }
+
 .azkar .zekr-msg {
   text-align: center;
   margin-top: 30px;
