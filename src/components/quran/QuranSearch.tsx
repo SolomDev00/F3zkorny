@@ -1,6 +1,7 @@
 import React, { useContext, FormEvent } from "react";
 import Surah from "./Surah";
 import { surahContext } from "../../contexts/surahContext";
+import LoadingSpinner from "../website-loading";
 
 const QuranSearch: React.FC = () => {
   const context = useContext(surahContext);
@@ -18,7 +19,7 @@ const QuranSearch: React.FC = () => {
 
   return (
     <div className="search">
-      <h1>السُوَر</h1>
+      <h1 className="mb-2">السُوَر</h1>
       <div className="search-inp">
         <form onSubmit={handleSubmit}>
           <input
@@ -26,10 +27,10 @@ const QuranSearch: React.FC = () => {
             list="surahs-names"
             id="surah-name"
             name="surah-name"
+            className="w-3/4 border-2 border-gray-300 text-black focus:outline-none outline-none focus:border-2 rounded-xl px-2 py-2 text-md bg-transparent duration-200"
           />
-          <button>إختيار</button>
+          <button className="w-1/4">إختيار</button>
         </form>
-
         <datalist id="surahs-names">
           {dataLoaded &&
             surahs.map((sur) => {
@@ -59,7 +60,7 @@ const QuranSearch: React.FC = () => {
           ))
         ) : (
           <center>
-            <h3>إنتظر حتى تحميل البيانات</h3>
+            <LoadingSpinner />
           </center>
         )}
       </div>
