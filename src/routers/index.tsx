@@ -13,7 +13,7 @@ import PageNotFound from "../views/PageNotFound";
 // import AuthLayout from "../views/auth/Layout";
 // import AuthPage from "../views/auth";
 // import RegisterPage from "../views/auth/pages/Register";
-import Azkar from "../components/views/Azkar/Azkar";
+import Azkar from "../components/azkar/Azkar";
 
 // const cookie = new Cookies();
 // const token = cookie.get("userLogged");

@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
-import Zekr from "./Zekr";
-import ZekrView from "./ZekrView";
-import useAzkarContext from "../../../contexts/azkarContext";
-import azkarApi from '../../../jsons/azkar.json'
+import Zekr from "../../components/azkar/Zekr";
+import ZekrView from "../../components/azkar/ZekrView";
+import useAzkarContext from "../../contexts/azkarContext";
+import azkarApi from '../../jsons/azkar.json'
 
 interface ZekrData {
   text: string;

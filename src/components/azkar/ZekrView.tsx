@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useContext } from "react";
 import { BsArrowRightSquareFill, BsArrowLeftSquareFill } from "react-icons/bs";
-import { azkarContext } from "../../../contexts/azkarContext";
+import { azkarContext } from "../../contexts/azkarContext";
 
 interface ZekrItem {
   text: string;

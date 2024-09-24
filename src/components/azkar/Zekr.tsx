@@ -4,7 +4,7 @@ import moonImg from "../../../assets/moon.png";
 import studyingImg from "../../../assets/studying.png";
 import rainImg from "../../../assets/rain.png";
 import prayImg from "../../../assets/pray.png";
-import useAzkarContext from "../../../contexts/azkarContext";
+import useAzkarContext from "../../contexts/azkarContext";
 
 const imgs: Record<string, string> = {
   sun: sunImg,
