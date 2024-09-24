@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import logoImg from "../../assets/logo.png";
 import quranImg from "../../assets/quran.png";
 import hadeethImg from "../../assets/hadeeth.png";
@@ -5,7 +6,6 @@ import azkarImg from "../../assets/azkar.png";
 import mosqueImg from "../../assets/mosque.png";
 import heartImg from "../../assets/heart.png";
 import personImg from "../../assets/person.png";
-import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
     return <nav>

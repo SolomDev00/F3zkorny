@@ -27,7 +27,7 @@ const QuranSearch: React.FC = () => {
             list="surahs-names"
             id="surah-name"
             name="surah-name"
-            className="w-3/4 border-2 border-gray-300 text-black focus:outline-none outline-none focus:border-2 rounded-xl px-2 py-2 text-md bg-transparent duration-200"
+            className="w-3/4 border-2 border-gray-300 text-black focus:outline-none focus:border-accent rounded-xl px-2 py-2 text-md bg-transparent duration-200 transition-all"
           />
           <button className="w-1/4">إختيار</button>
         </form>
@@ -47,7 +47,7 @@ const QuranSearch: React.FC = () => {
         </datalist>
       </div>
 
-      <div className="surahs-selection">
+      <div className="surahs-selection overflow-y-auto max-h-[90%]">
         {dataLoaded ? (
           surahs.map((sur) => (
             <Surah

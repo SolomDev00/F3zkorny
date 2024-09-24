@@ -164,8 +164,10 @@ nav .container .profile img {
   height: 75%;
   overflow-y: scroll;
   padding-left: 20px;
+  padding-right: 10px;
 }
-.quran .search::-webkit-scrollbar {
+
+.quran .surahs-selection::-webkit-scrollbar {
   display: none;
 }
 .quran .search h1 {
@@ -206,7 +208,7 @@ nav .container .profile img {
   outline: none;
   border: none;
   background-color: var(--gray-2);
-  color: #0d0c22bc;
+  color: var(--green);
   cursor: pointer;
   transition: 0.3s ease;
 }
@@ -267,7 +269,8 @@ input:hover {
   font-size: 1.5rem;
   font-weight: 700;
   font-family: "Amiri", serif;
-  margin-bottom: -5px;
+  margin-bottom: -10px;
+  padding-top: 10px;
 }
 .quran .surah .disc {
   font-size: 1.2rem;
