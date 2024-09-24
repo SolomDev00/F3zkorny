@@ -19,7 +19,7 @@ const Prayer: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [location, setLocation] = useState<string | null>(null);
   const [currentTime, setCurrentTime] = useState<string | null>(null);
-  const [nextPrayer, setNextPrayer] = useState<{ name: string; time: string; remaining: string } | null>(null);
+  const [nextPrayer, setNextPrayer] = useState<{ name: string; time: string } | null>(null);
 
   const fetchLocation = async () => {
     try {
@@ -32,7 +32,7 @@ const Prayer: React.FC = () => {
     } catch (err) {
       console.error(err);
       setLocation("موقع غير معروف");
-      return "Cairo"; // استخدم الرياض كافتراضي في حالة الفشل
+      return "Cairo";
     }
   };
 
@@ -52,26 +52,11 @@ const Prayer: React.FC = () => {
     }
   };
 
-  const calculateNextPrayer = (times: PrayerTimes) => {
-    const now = moment();
-    const prayerNames: (keyof PrayerTimes)[] = ["Fajr", "Sunrise", "Dhuhr", "Asr", "Maghrib", "Isha"];
-    let next = null;
-
-    for (const name of prayerNames) {
-      const prayerTime = moment(times[name], "HH:mm");
-      if (prayerTime.isAfter(now)) {
-        next = { name: name, time: prayerTime.format("HH:mm"), remaining: prayerTime.from(now) };
-        break;
-      }
-    }
-
-    return next;
-  };
-
   useEffect(() => {
     const getLocationAndPrayerTimes = async () => {
       const userLocation = await fetchLocation();
       fetchPrayerTimes(userLocation);
+      setCurrentTime(moment().format('HH:mm'));
     };
 
     getLocationAndPrayerTimes();
@@ -79,11 +64,24 @@ const Prayer: React.FC = () => {
 
   useEffect(() => {
     if (prayerTimes) {
-      const next = calculateNextPrayer(prayerTimes);
+      const timesWithIqama = {
+        Fajr: moment(prayerTimes.Fajr, "HH:mm").add(30, 'minutes'),
+        Dhuhr: moment(prayerTimes.Dhuhr, "HH:mm").add(15, 'minutes'),
+        Asr: moment(prayerTimes.Asr, "HH:mm").add(15, 'minutes'),
+        Maghrib: moment(prayerTimes.Maghrib, "HH:mm").add(10, 'minutes'),
+        Isha: moment(prayerTimes.Isha, "HH:mm").add(15, 'minutes'),
+      };
+
+      let next = null;
+      for (const [name, time] of Object.entries(timesWithIqama)) {
+        if (moment(currentTime, 'HH:mm').isBefore(time)) {
+          next = { name, time: time.format('HH:mm') };
+          break;
+        }
+      }
       setNextPrayer(next);
-      setCurrentTime(moment().format("HH:mm"));
     }
-  }, [prayerTimes]);
+  }, [prayerTimes, currentTime]);
 
   if (!prayerTimes) {
     return <div className='w-full flex items-center justify-center my-[20%] text-xl'><LoadingSpinner /></div>;
@@ -94,21 +92,22 @@ const Prayer: React.FC = () => {
   }
 
   return (
-    <div className='my-20 flex flex-col items-center justify-center text-center'>
+    <div className='my-20 flex flex-col items-center justify-center'>
       <h1 className='text-2xl text-accent font-medium'>أوقات الصلاة في {location}</h1>
-      <div className='mt-6 space-y-2'>
-        <p className='text-5xl text-primary'>{currentTime}</p>
-        {nextPrayer ? (
-          <p>أقرب صلاة: {nextPrayer.name} في {nextPrayer.time} بعد {nextPrayer.remaining}</p>
-        ) : (
-          <p className='text-xl'>لا توجد صلوات قادمة اليوم.</p>
-        )}
-      </div>
+      <h2 className='text-lg'>الوقت الحالي: {currentTime}</h2>
+      {nextPrayer && (
+        <h2 className='text-lg'>أقرب صلاة: {nextPrayer.name} في {nextPrayer.time}</h2>
+      )}
       <div className="prayer-times text-right">
         <div className="box">
-          <h3 className='text-xl font-medium'>
-            الفجر: {prayerTimes.Fajr}
-          </h3>
+          <div className="flex flex-col gap-2">
+            <h3 className='text-xl font-medium'>
+              الفجر: {prayerTimes.Fajr}
+            </h3>
+            <h3 className='text-xl font-medium'>
+              الإقامة: {moment(prayerTimes.Fajr, "HH:mm").add(30, 'minutes').format('HH:mm')}
+            </h3>
+          </div>
           <img className="icon" src={moonImg} alt="Moon" />
         </div>
         <div className="box">
@@ -119,25 +118,25 @@ const Prayer: React.FC = () => {
         </div>
         <div className="box">
           <h3 className='text-xl font-medium'>
-            الظهر: {prayerTimes.Dhuhr}
+            الظهر: {prayerTimes.Dhuhr} (الإقامة: {moment(prayerTimes.Dhuhr, "HH:mm").add(15, 'minutes').format('HH:mm')})
           </h3>
           <img className="icon" src={sunImg} alt="Sun" />
         </div>
         <div className="box">
           <h3 className='text-xl font-medium'>
-            العصر: {prayerTimes.Asr}
+            العصر: {prayerTimes.Asr} (الإقامة: {moment(prayerTimes.Asr, "HH:mm").add(15, 'minutes').format('HH:mm')})
           </h3>
           <img className="icon" src={poinImg} alt="Poinsettia" />
         </div>
         <div className="box">
           <h3 className='text-xl font-medium'>
-            المغرب: {prayerTimes.Maghrib}
+            المغرب: {prayerTimes.Maghrib} (الإقامة: {moment(prayerTimes.Maghrib, "HH:mm").add(10, 'minutes').format('HH:mm')})
           </h3>
           <img className="icon" src={poinImg} alt="Poinsettia" />
         </div>
         <div className="box">
           <h3 className='text-xl font-medium'>
-            العشاء: {prayerTimes.Isha}
+            العشاء: {prayerTimes.Isha} (الإقامة: {moment(prayerTimes.Isha, "HH:mm").add(15, 'minutes').format('HH:mm')})
           </h3>
           <img className="icon" src={poinImg} alt="Poinsettia" />
         </div>
