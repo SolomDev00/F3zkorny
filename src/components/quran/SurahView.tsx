@@ -5,8 +5,13 @@ import tasdeeqImg from "../../assets/tasdeeq.png";
 import { surahContext } from "../../contexts/surahContext";
 
 const SurahView: React.FC = () => {
-  const { surahs, surahNumber, surah, arrowHandler, surahLoaded } =
-    useContext(surahContext);
+  const context = useContext(surahContext);
+
+  if (!context) {
+    return <div>Context not provided</div>;
+  }
+
+  const { surahs, surahNumber, surah, arrowHandler, surahLoaded } = context;
 
   return (
     <div className="surah-view">
@@ -15,11 +20,12 @@ const SurahView: React.FC = () => {
           <>
             <div className="name">
               <BsArrowLeftSquareFill
-                className={`arrow left ${surahNumber === surahs.length && "disable"}`}
+                className={`arrow left ${surahNumber === surahs.length ? "disable" : ""
+                  }`}
                 onClick={() => arrowHandler("next")}
               />
               <BsArrowRightSquareFill
-                className={`arrow right ${surahNumber === 1 && "disable"}`}
+                className={`arrow right ${surahNumber === 1 ? "disable" : ""}`}
                 onClick={() => arrowHandler("prev")}
               />
               <h1>{surahLoaded ? surah.name_ar : <div>جاري التحميل</div>}</h1>
@@ -35,12 +41,14 @@ const SurahView: React.FC = () => {
               </div>
               <div className="ayahs">
                 {surahLoaded ? (
-                  surah.ayahs.map((ayah: { number: number; numberInSurah: number; text: string }) => (
-                    <React.Fragment key={ayah.number}>
-                      <span className="ayah-text">{ayah.text}</span>
-                      <span className="ayah-num">&#40;{ayah.numberInSurah}&#41;</span>
-                    </React.Fragment>
-                  ))
+                  surah.ayahs.map(
+                    (ayah: { number: number; numberInSurah: number; text: string }) => (
+                      <React.Fragment key={ayah.number}>
+                        <span className="ayah-text">{ayah.text}</span>
+                        <span className="ayah-num">&#40;{ayah.numberInSurah}&#41;</span>
+                      </React.Fragment>
+                    )
+                  )
                 ) : (
                   <div className="loaded">........</div>
                 )}

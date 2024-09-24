@@ -3,7 +3,13 @@ import Surah from "./Surah";
 import { surahContext } from "../../contexts/surahContext";
 
 const QuranSearch: React.FC = () => {
-  const { dataLoaded, surahs, searchHandler } = useContext(surahContext);
+  const context = useContext(surahContext);
+
+  if (!context) {
+    return <div>Context not provided</div>;
+  }
+
+  const { dataLoaded, surahs, searchHandler } = context;
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -13,7 +19,7 @@ const QuranSearch: React.FC = () => {
   return (
     <div className="search">
       <h1>السُوَر</h1>
-      <div className="serach-inp">
+      <div className="search-inp">
         <form onSubmit={handleSubmit}>
           <input
             placeholder="البحث عن سورة"
@@ -26,28 +32,23 @@ const QuranSearch: React.FC = () => {
 
         <datalist id="surahs-names">
           {dataLoaded &&
-            surahs.map((sur: { number: number; name: string }) => {
+            surahs.map((sur) => {
               const name = sur.name
                 .split("")
                 .filter((char) => {
-                  return (
-                    char.charCodeAt(0) < 1612 || char.charCodeAt(0) === 1649
-                  );
+                  return char.charCodeAt(0) < 1612 || char.charCodeAt(0) === 1649;
                 })
                 .join("");
               return (
-                <option
-                  key={sur.number}
-                  value={`${sur.number}-${name}`}
-                />
+                <option key={sur.number} value={`${sur.number}-${name}`} />
               );
             })}
         </datalist>
       </div>
 
-      <div className="surhas-selection">
+      <div className="surahs-selection">
         {dataLoaded ? (
-          surahs.map((sur: { number: number; name: string; revelationType: string; numberOfAyahs: number }) => (
+          surahs.map((sur) => (
             <Surah
               num={sur.number}
               key={sur.number}
