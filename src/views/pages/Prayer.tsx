@@ -21,6 +21,14 @@ const Prayer: React.FC = () => {
   const [currentTime, setCurrentTime] = useState<string | null>(null);
   const [nextPrayer, setNextPrayer] = useState<{ name: string; time: string } | null>(null);
 
+  const prayerNames = {
+    Fajr: "الفجر",
+    Dhuhr: "الظهر",
+    Asr: "العصر",
+    Maghrib: "المغرب",
+    Isha: "العشاء",
+  };
+
   const fetchLocation = async () => {
     try {
       const response = await fetch("https://ipapi.co/json/");
@@ -32,7 +40,7 @@ const Prayer: React.FC = () => {
     } catch (err) {
       console.error(err);
       setLocation("موقع غير معروف");
-      return "Cairo";
+      return "Cairo"; // قيمة افتراضية في حال فشل الجلب
     }
   };
 
@@ -96,7 +104,7 @@ const Prayer: React.FC = () => {
       <h1 className='text-2xl text-accent font-medium'>أوقات الصلاة في {location}</h1>
       <h2 className='text-lg'>الوقت الحالي: {currentTime}</h2>
       {nextPrayer && (
-        <h2 className='text-lg'>أقرب صلاة: {nextPrayer.name} في {nextPrayer.time}</h2>
+        <h2 className='text-lg'>أقرب صلاة: {prayerNames[nextPrayer.name]} في {nextPrayer.time}</h2>
       )}
       <div className="prayer-times text-right">
         <div className="box">
