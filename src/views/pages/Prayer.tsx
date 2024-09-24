@@ -40,7 +40,7 @@ const Prayer: React.FC = () => {
     } catch (err) {
       console.error(err);
       setLocation("موقع غير معروف");
-      return "Cairo"; // قيمة افتراضية في حال فشل الجلب
+      return "Cairo";
     }
   };
 

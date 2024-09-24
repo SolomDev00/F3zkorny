@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import logoImg from "../../assets/logo.png";
 import quranImg from "../../assets/quran.png";
-import hadeethImg from "../../assets/hadeeth.png";
+import hadithsImg from "../../assets/hadeeth.png";
 import azkarImg from "../../assets/azkar.png";
 import mosqueImg from "../../assets/mosque.png";
 import heartImg from "../../assets/heart.png";
@@ -22,8 +22,8 @@ const Navbar = () => {
                     <img className="icon-sm" src={azkarImg} alt="azkar icon" />
                     <div>الآذكار</div>
                 </NavLink>
-                <NavLink to="/hadeth">
-                    <img className="icon-sm" src={hadeethImg} alt="hadeeth icon" />
+                <NavLink to="/hadiths">
+                    <img className="icon-sm" src={hadithsImg} alt="Hadiths icon" />
                     <div>الأحاديث</div>
                 </NavLink>
                 <NavLink to="/prayer">

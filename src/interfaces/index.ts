@@ -24,23 +24,23 @@ export interface ILoginInput {
   };
 }
 
-export interface HadethDataEntry {
+export interface HadithsDataEntry {
   text: string;
   disc: string;
 }
 
-export interface HadethCategory {
+export interface HadithsCategory {
   id: number;
   name: string;
   icon: string;
-  data: HadethDataEntry[];
+  data: HadithsDataEntry[];
 }
 
-export interface HadethContextProps {
-  hadethCategories: HadethCategory[];
-  currentCategory: HadethCategory | null;
-  currentHadethItem: HadethDataEntry | null;
-  currentHadethIndex: number;
+export interface HadithsContextProps {
+  HadithsCategories: HadithsCategory[];
+  currentCategory: HadithsCategory | null;
+  currentHadithsItem: HadithsDataEntry | null;
+  currentHadithsIndex: number;
   selectCategory: (id: number) => void;
-  navigateHadeth: (direction: "next" | "prev") => void;
+  navigateHadiths: (direction: "next" | "prev") => void;
 }
