@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { BsArrowRightSquareFill, BsArrowLeftSquareFill } from "react-icons/bs";
 import { HadithsContext } from "../../contexts/hadithsContext";
+import { SoArrowLeft, SoArrowRight } from "solom-icon";
 
 const HadithsView: React.FC = () => {
   const { currentCategory, currentHadithsItem, navigateHadiths, currentHadithsIndex } = useContext(HadithsContext)!;
@@ -20,14 +20,12 @@ const HadithsView: React.FC = () => {
         <div>{currentHadithsItem.disc}</div>
       </div>
       <div className="arrows">
-        <BsArrowRightSquareFill
-          className={`arr ${currentHadithsIndex === 0 ? "disable" : ""}`}
-          onClick={() => navigateHadiths("prev")}
-        />
-        <BsArrowLeftSquareFill
-          className={`arr ${currentHadithsIndex === currentCategory.data.length - 1 ? "disable" : ""}`}
-          onClick={() => navigateHadiths("next")}
-        />
+        <div className={`boxArr bg-[#76c853] rounded-md p-2 ${currentHadithsIndex === 0 ? "disable" : ""}`} onClick={() => navigateHadiths("next")}>
+          <SoArrowLeft />
+        </div>
+        <div className={`boxArr bg-[#76c853] rounded-md p-2 ${currentHadithsIndex === currentCategory.data.length - 1 ? "disable" : ""}`} onClick={() => navigateHadiths("prev")}>
+          <SoArrowRight />
+        </div>
       </div>
     </div>
   );

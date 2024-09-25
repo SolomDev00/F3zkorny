@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import dateImg from "../../assets/imgs/date.png";
-import cloverImg from "../../assets/imgs/clover.png";
-import sweetImg from "../../assets/imgs/sweetener.png";
-import crystalImg from "../../assets/imgs/crystal.png";
-import poinImg from "../../assets/imgs/poinsettia.png";
+import dateImg from "../../assets/date.png";
+import cloverImg from "../../assets/clover.png";
+import sweetImg from "../../assets/sweetener.png";
+import crystalImg from "../../assets/crystal.png";
+import poinImg from "../../assets/poinsettia.png";
 import { HadithsContext } from "../../contexts/hadithsContext";
 
 interface HadithProps {

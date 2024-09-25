@@ -6,13 +6,16 @@ import { Provider } from "react-redux";
 import store from "./app/store.ts";
 import { AzkarState } from "./contexts/azkarContext.tsx";
 import { SurahState } from "./contexts/surahContext.tsx";
+import { HadithsState } from "./contexts/hadithsContext.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Provider store={store}>
       <AzkarState>
         <SurahState>
-          <App />
+          <HadithsState>
+            <App />
+          </HadithsState>
         </SurahState>
       </AzkarState>
     </Provider>
