@@ -42,6 +42,10 @@ const HadithsState: React.FC<HadithsStateProps> = ({ children }) => {
     setCurrentHadithsItem(currentCategory.data[newIndex]);
   };
 
+  const hadithClickHandler = (id: number) => {
+    selectCategory(id);
+  };
+
   return (
     <HadithsContext.Provider
       value={{
@@ -51,6 +55,7 @@ const HadithsState: React.FC<HadithsStateProps> = ({ children }) => {
         currentHadithsIndex,
         selectCategory,
         navigateHadiths,
+        hadithClickHandler,
       }}
     >
       {children}

@@ -43,4 +43,5 @@ export interface HadithsContextProps {
   currentHadithsIndex: number;
   selectCategory: (id: number) => void;
   navigateHadiths: (direction: "next" | "prev") => void;
+  hadithClickHandler: (id: number) => void;
 }
