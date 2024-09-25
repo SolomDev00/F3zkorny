@@ -14,12 +14,15 @@ interface PrayerTimes {
   Isha: string;
 }
 
+type PrayerName = 'Fajr' | 'Dhuhr' | 'Asr' | 'Maghrib' | 'Isha';
+
 const Prayer: React.FC = () => {
   const [prayerTimes, setPrayerTimes] = useState<PrayerTimes | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [location, setLocation] = useState<string | null>(null);
   const [currentTime, setCurrentTime] = useState<string | null>(null);
-  const [nextPrayer, setNextPrayer] = useState<{ name: string; time: string } | null>(null);
+  const [nextPrayer, setNextPrayer] = useState<{ name: PrayerName; time: string } | null>(null);
+  const [remainingTime, setRemainingTime] = useState<string | null>(null);
 
   const prayerNames = {
     Fajr: "الفجر",
@@ -83,13 +86,32 @@ const Prayer: React.FC = () => {
       let next = null;
       for (const [name, time] of Object.entries(timesWithIqama)) {
         if (moment(currentTime, 'HH:mm').isBefore(time)) {
-          next = { name, time: time.format('HH:mm') };
+          next = { name: name as PrayerName, time: time.format('HH:mm') };
           break;
         }
       }
       setNextPrayer(next);
     }
   }, [prayerTimes, currentTime]);
+
+  useEffect(() => {
+    const updateRemainingTime = () => {
+      if (nextPrayer) {
+        const now = moment();
+        const nextPrayerTime = moment(nextPrayer.time, 'HH:mm');
+        const diffDuration = moment.duration(nextPrayerTime.diff(now));
+        const hours = Math.floor(diffDuration.asHours());
+        const minutes = diffDuration.minutes();
+
+        setRemainingTime(`${hours} ساعة و ${minutes} دقيقة`);
+      }
+    };
+
+    const intervalId = setInterval(updateRemainingTime, 60000);
+    updateRemainingTime();
+
+    return () => clearInterval(intervalId);
+  }, [nextPrayer]);
 
   if (!prayerTimes) {
     return <div className='w-full flex items-center justify-center my-[20%] text-xl'><LoadingSpinner /></div>;
@@ -104,7 +126,10 @@ const Prayer: React.FC = () => {
       <h1 className='text-2xl text-accent font-medium'>أوقات الصلاة في {location}</h1>
       <h2 className='text-lg'>الوقت الحالي: {currentTime}</h2>
       {nextPrayer && (
-        <h2 className='text-lg'>أقرب صلاة: {prayerNames[nextPrayer.name]} في {nextPrayer.time}</h2>
+        <div>
+          <h2 className='text-lg'>أقرب صلاة: {prayerNames[nextPrayer.name]} في {nextPrayer.time}</h2>
+          {remainingTime && <h3 className='text-md'>الوقت المتبقي: {remainingTime}</h3>}
+        </div>
       )}
       <div className="prayer-times text-right">
         <div className="box">
