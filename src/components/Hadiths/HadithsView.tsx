@@ -20,11 +20,11 @@ const HadithsView: React.FC = () => {
         <div>{currentHadithsItem.disc}</div>
       </div>
       <div className="arrows">
-        <div className={`boxArr bg-[#76c853] rounded-md p-2 ${currentHadithsIndex === 0 ? "disable" : ""}`} onClick={() => navigateHadiths("next")}>
-          <SoArrowLeft />
-        </div>
-        <div className={`boxArr bg-[#76c853] rounded-md p-2 ${currentHadithsIndex === currentCategory.data.length - 1 ? "disable" : ""}`} onClick={() => navigateHadiths("prev")}>
+        <div className={`boxArr bg-[#76c853] rounded-md p-2 ${currentHadithsIndex === currentCategory.data.length - 1 ? "disable" : ""}`} onClick={() => navigateHadiths("next")}>
           <SoArrowRight />
+        </div>
+        <div className={`boxArr bg-[#76c853] rounded-md p-2 ${currentHadithsIndex === 0 ? "disable" : ""}`} onClick={() => navigateHadiths("prev")}>
+          <SoArrowLeft />
         </div>
       </div>
     </div>
