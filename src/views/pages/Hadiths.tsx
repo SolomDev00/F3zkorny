@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import azkarApi from "../../jsons/hadiths.json";
-import Hadith from "../../components/Hadiths/Hadith";
-import HadithsView from "../../components/Hadiths/HadithsView";
+import Hadith from "../../components/hadiths/Hadith";
+import HadithsView from "../../components/hadiths/HadithsView";
 import { HadithsContext } from "../../contexts/hadithsContext";
 
 const Hadiths: React.FC = () => {

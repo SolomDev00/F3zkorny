@@ -16,6 +16,7 @@ import PageNotFound from "../views/PageNotFound";
 import Azkar from "../views/pages/Azkar";
 import Quran from "../views/pages/Quran";
 import PrayerTimes from "../views/pages/Prayer";
+import Hadiths from "../views/pages/Hadiths";
 
 // const cookie = new Cookies();
 // const token = cookie.get("userLogged");
@@ -31,6 +32,7 @@ const routers = createHashRouter(
         {/* <Route index element={<HomePage />} /> */}
         <Route path="/azkar" element={<Azkar />} />
         <Route path="/quran" element={<Quran />} />
+        <Route path="/hadiths" element={<Hadiths />} />
         <Route path="/prayer" element={<PrayerTimes />} />
       </Route>
       <Route
