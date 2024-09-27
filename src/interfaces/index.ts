@@ -101,3 +101,17 @@ export interface IResetPassInput {
     minLength?: number;
   };
 }
+
+export interface IChangeInput {
+  name: "oldNum" | "newNum";
+  placeholder: string;
+  type: string;
+  forl: string;
+  placel: string;
+  validation: {
+    pattern?: RegExp;
+    required?: boolean;
+    minLength?: number;
+    maxLength?: number;
+  };
+}

@@ -1,8 +1,8 @@
 import React, { useRef, useContext } from "react";
 import azkarApi from "../../jsons/hadiths.json";
+import { HadithsContext } from "../../contexts/hadithsContext";
 import Hadith from "../../components/hadiths/Hadith";
 import HadithsView from "../../components/hadiths/HadithsView";
-import { HadithsContext } from "../../contexts/hadithsContext";
 
 const Hadiths: React.FC = () => {
   const { currentCategory } = useContext(HadithsContext)!;
