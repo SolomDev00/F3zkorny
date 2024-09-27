@@ -45,3 +45,59 @@ export interface HadithsContextProps {
   navigateHadiths: (direction: "next" | "prev") => void;
   hadithClickHandler: (id: number) => void;
 }
+
+export interface IErrorResponse {
+  message?: string[];
+  error: {
+    message?: string;
+    details?: {
+      message?: string;
+      // errors: {}[];
+    };
+  };
+}
+
+export interface IToken {
+  token: string;
+  email: string;
+}
+
+export interface INewInput {
+  name: "newNum";
+  placeholder: string;
+  type: string;
+  forl: string;
+  placel: string;
+  validation: {
+    pattern?: RegExp;
+    required?: boolean;
+    minLength?: number;
+    maxLength?: number;
+  };
+}
+
+export interface IResetInput {
+  name: "email";
+  placeholder: string;
+  type: string;
+  forl: string;
+  placel: string;
+  validation: {
+    pattern?: RegExp;
+    required?: boolean;
+    minLength?: number;
+  };
+}
+
+export interface IResetPassInput {
+  name: "oldPass" | "newPass";
+  placeholder: string;
+  type: string;
+  forl: string;
+  placel: string;
+  validation: {
+    pattern?: RegExp;
+    required?: boolean;
+    minLength?: number;
+  };
+}
