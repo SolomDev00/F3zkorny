@@ -49,7 +49,7 @@ const Prayer: React.FC = () => {
 
   const fetchPrayerTimes = async (location: string) => {
     try {
-      const response = await fetch(`http://api.aladhan.com/v1/timingsByAddress?address=${location}`);
+      const response = await fetch(`https://api.aladhan.com/v1/timingsByAddress?address=${location}`);
       const data = await response.json();
 
       if (data.code === 200) {

@@ -30,7 +30,7 @@ const SurahState: React.FC<{ children: ReactNode }> = (props) => {
   const surahClickHandler = (num: number) => {
     setSurahLoad(false);
     setSurahNumber(num);
-    fetch(`http://api.alquran.cloud/v1/surah/${num}`).then((res) => {
+    fetch(`https://api.alquran.cloud/v1/surah/${num}`).then((res) => {
       res.json().then((result) => {
         const data = result.data;
         const surah = {
@@ -47,7 +47,7 @@ const SurahState: React.FC<{ children: ReactNode }> = (props) => {
   const arrowHandler = (dir: string) => {
     setSurahLoad(false);
     fetch(
-      `http://api.alquran.cloud/v1/surah/${dir === "next" ? surahNumber + 1 : surahNumber - 1
+      `https://api.alquran.cloud/v1/surah/${dir === "next" ? surahNumber + 1 : surahNumber - 1
       }`
     ).then((res) => {
       res.json().then((result) => {
@@ -83,7 +83,7 @@ const SurahState: React.FC<{ children: ReactNode }> = (props) => {
 
 
   useEffect(() => {
-    fetch("http://api.alquran.cloud/v1/meta").then((res) =>
+    fetch("https://api.alquran.cloud/v1/meta").then((res) =>
       res.json().then((result) => {
         setSurahs(result.data.surahs.references);
         setDataLoad(true);
